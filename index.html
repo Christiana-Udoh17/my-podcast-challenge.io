@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My favourite Podcast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/1312/1312585.png" type="image/text" />
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: "Roboto", Arial, Helvetica, sans-serif;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/574/original/Podcast-Image.jpg?1729023590");
+            height: 90vh;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            background-size: cover;
+        }
+
+        nav {
+            display: flex;
+            background-color: rgba(219, 196, 196, 0.91);
+            justify-content: space-between;
+            padding: 15px 0;
+            width: 100%;
+            background-repeat: no-repeat;
+
+
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .logo p {
+            font-size: 20px;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .info ul {
+            display: flex;
+            list-style-type: none;
+            gap: 50px;
+        }
+
+        .info a {
+            text-decoration: none;
+            font-weight: 600;
+            color: rgb(33, 34, 34);
+            cursor: pointer;
+        }
+
+        .info a:hover {
+            color: rgba(0, 0, 0);
+        }
+
+
+        .sign-up {
+            margin-right: 20px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 35px;
+            font-size: 17px;
+            background-color: #da8e82ea;
+            transition: all 200ms ease-in-out;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            background-color: #da8e82a9;
+        }
+
+        .subscribe {
+            margin-right: 10px;
+        }
+
+
+        .header-content {
+            padding: 200px 0 20px 50px;
+            width: 900px;
+            color: rgb(183, 165, 165);
+
+
+
+        }
+
+        .header-content h1 {
+            font-size: 6rem;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            line-height: 1.3;
+            width: 100%;
+            color: rgba(33, 34, 34, )
+        }
+
+        .header-content h3 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: rgb(33, 34, 34);
+            text-transform: uppercase;
+            line-height: 1.5;
+
+
+        }
+
+        .header-content p {
+            position: relative;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            color: rgb(33, 34, 34);
+            line-height: 0.3;
+            font-style: italic;
+            letter-spacing: 2px;
+
+
+        }
+
+        .audio-btn {
+            position: relative;
+            top: 10%;
+            left: 7%;
+            margin-top: 50px;
+            background-color: #fb6c92d2;
+            padding: 10px 30px;
+            color: rgb(223, 218, 218);
+            font-size: 17px;
+            border: none;
+            border-radius: 40px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .waves {
+            height: 30px
+        }
+
+        .play-btn {
+            height: 30px
+        }
+
+
+        main {
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .videos-container {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            width: 100%;
+        }
+
+        video {
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        .video-wrapper {
+            background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+            padding: 20px 20px 40px 20px;
+            border-radius: 25px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .video-wrapper p {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .video-wrapper h4 {
+            margin-bottom: 10px;
+        }
+
+        .video-wrapper h5 {
+            margin: 0;
+            font-style: italic;
+        }
+
+        .episode-header {
+            text-align: center;
+            font-size: 40px;
+        }
+
+
+        .listen-btn {
+            background-color: rgb(228, 230, 230);
+            padding: 10px 25px;
+            border-radius: 7px;
+            border: none;
+            font-size: 16.5px;
+            box-shadow: 5px 5px 5px rgb(135, 133, 133);
+            transition: all 200ms ease-in-out;
+        }
+
+        .listen-btn:hover {
+            background-color: rgb(173, 174, 174);
+        }
+
+        .review-wrapper {
+            display: flex;
+            border-radius: 25px;
+            gap: 20px;
+
+        }
+
+        .review-header {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 0;
+
+        }
+
+        .testimonials {
+            margin-top: 60px;
+        }
+
+        .testimonials h3 {
+            text-align: center;
+            margin: 0 0 40px 0;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .review {
+            margin: 0 auto;
+            background: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+            padding: 20px 40px;
+            width: 200px;
+            border-radius: 20px;
+
+            transition: all 150ms ease-in-out;
+
+        }
+
+        .review:hover {
+            transform: scale(1.1)
+        }
+
+        .review .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            display: block;
+            border: 1px solid rgb(59, 59, 59);
+
+        }
+
+
+        .review-text {
+            text-align: center;
+        }
+
+        .review-text h4 {
+            margin-bottom: 10px;
+        }
+
+        .review-text h5 {
+            margin: 0;
+            font-style: italic;
+        }
+
+        .review-text p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            color: rgb(57, 56, 56);
+        }
+
+        .rating {
+            display: block;
+            margin: 10px auto 0 auto;
+
+        }
+
+        .star {
+            height: 20px;
+            width: 20px;
+        }
+
+        .blog {
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .blog h2 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+
+        .blog-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 30px;
+
+
+        }
+
+        .blog-photo {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            bottom: 0;
+            margin-top: -10px;
+            margin-left: 10px;
+            -webkit-animation: bounce 1s infinite;
+            z-index: -1;
+        }
+
+        @-webkit-keyframes bounce {
+            0% {
+                bottom: 5px;
+            }
+
+            25%,
+            75% {
+                bottom: 5px;
+            }
+
+            50% {
+                bottom: 20px;
+            }
+
+            100% {
+                bottom: 0
+            }
+        }
+
+
+        .blog-photo img {
+
+            border-top-left-radius: 30px;
+            border-top-right-radius: 200px;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 30px;
+
+        }
+
+        .blog-content {
+            max-width: 800px;
+            padding-top: 40px;
+
+        }
+
+        .blog-content p {
+            line-height: 2;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .footer {
+            background: radial-gradient(879px at 10.4% 22.3%, rgb(255, 235, 238) 0%, rgb(186, 190, 245) 93.6%);
+            padding: 30px 0 20px 0;
+
+        }
+
+        .footer-wrapper {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+            width: 100%;
+
+        }
+
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 3px solid #63606049;
+            outline: none;
+
+
+        }
+
+        .sign-up {
+            background-color: #63606049;
+            padding: 10px 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 2px rgba(39, 40, 40, 0.267);
+            outline: none;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+
+        }
+
+        .sign-up:hover {
+            background-color: #63606074;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer h2 {
+
+            text-decoration: underline;
+        }
+
+        .social-media img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .socials {
+            margin-left: 20px;
+        }
+
+        .rights {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+
+
+
+        .change-theme {
+            background-color: rgb(36, 35, 35);
+            padding: 15px 25px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 16.5px;
+            color: pointer;
+
+        }
+
+        .dark nav {
+            background-color: rgba(162, 69, 69, 0.944);
+        }
+
+        .dark {
+            background-color: rgb(31, 31, 31);
+            color: white;
+        }
+
+        .dark .review {
+            background: linear-gradient(45deg, #46262a 0%, #9b5159 100%);
+            color: rgb(156, 143, 143);
+        }
+
+        .dark .review p {
+            color: rgb(227, 209, 209);
+        }
+
+        .dark .video-wrapper {
+            background: linear-gradient(-20deg, #483a74 0%, #662a27 100%, #fd615970 100%);
+        }
+
+        .dark .listen-btn {
+            box-shadow: 2px 2px 6px rgb(135, 133, 133);
+        }
+
+        .dark .footer {
+            background: radial-gradient(879px at 10.4% 22.3%, rgb(179, 78, 94) 0%, rgb(66, 70, 131) 93.6%);
+        }
+
+        .dark .blog-content {
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
+            text-shadow: 1px 1px 10px rgba(249, 249, 86, 0.867), 1px 1px 10px rgb(244, 178, 55);
+            color: #f4eaea;
+        }
+
+        .dark .blog h2 {
+            text-shadow: 1px 1px 10px rgba(249, 249, 86, 0.867), 1px 1px 10px rgb(244, 178, 55);
+            color: #f4eaea;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .dark .blog-photo {
+            display: none;
+        }
+
+        .dark .info a {
+            color: rgb(234, 228, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav>
+                <div class="logo">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/573/original/logo.png?1729023498"
+                        alt=" podcast logo" class="nav-logo" />
+                    <p>Podcast</p>
+                </div>
+                <div class="info">
+                    <ul>
+                        <a href="#episodes">
+                            <li>Episodes</li>
+                        </a>
+                        <a href="#reviews">
+                            <li>Review</li>
+                        </a>
+                        <a href="#blog">
+                            <li>Blog</li>
+                        </a>
+                        <a href="#contact">
+                            <li>Contact</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="sign-in">
+                    <button class="btn login">Log In</button>
+                    <button class="btn subscribe">Subscribe</button>
+                </div>
+            </nav>
+            <div class="header-content">
+                <h1>LOVE CULTURE,</h1>
+                <h3>We talk, you listen</h3>
+                <p>The most interactive show on the internet...</p>
+                <div class="audio-btn">Start listening
+                    <img src="https://cdn-icons-png.freepik.com/256/16313/16313677.png?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                        alt=" music frequency" class="waves">
+                    <img src="https://cdn-icons-png.freepik.com/256/12515/12515301.png?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                        alt="play-btn" class="play-btn">
+                </div>
+
+            </div>
+
+        </header>
+        <main class="main-content">
+
+            <section class="episodes" id="episodes">
+                <h2 class="episode-header">Explore More Podcast</h2>
+                <div class="videos-container">
+                    <div class="video-wrapper">
+                        <div> <video src="https://videos.pexels.com/video-files/6878209/6878209-sd_960_506_25fps.mp4"
+                                controls autoplay loop></video></div>
+                        <div>
+                            <h4>Mattheiu</h4>
+                            <h5>Techpreneur</h5>
+                            <p> A tech career in SheCodes empowers women to break into the tech industry by providing
+                                practical
+                                coding skills and
+                                mentorship.
+                            </p>
+                            <button class="listen-btn"> Listen Now</button>
+                        </div>
+                    </div>
+                    <div class="video-wrapper">
+                        <div><video src="https://videos.pexels.com/video-files/6948549/6948549-sd_640_360_24fps.mp4"
+                                controls autoplay loop></video></div>
+                        <div>
+                            <h4> Mabelline & Natasha </h4>
+                            <h5>Health & lifestyle</h5>
+                            <p>A balanced lifestyle prioritizes both physical health and mental well-being, emphasizing
+                                regular
+                                exercise, nutritious and
+                                eating.
+                            </p>
+                            <button class="listen-btn"> Listen Now</button>
+                        </div>
+
+                    </div>
+                    <div class="video-wrapper">
+                        <div><video src="https://videos.pexels.com/video-files/8993456/8993456-sd_640_360_30fps.mp4"
+                                controls autoplay loop></video></div>
+                        <div>
+                            <h4>Aisha</h4>
+                            <h5>Cosmetologist</h5>
+                            <p>Beauty is often seen as a reflection of individuality and self-expression, transcending
+                                traditional standards and
+                                embracing diversity. </p>
+                            <button class="listen-btn"> Listen Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="testimonials" id="reviews">
+                <h2 class="review-header">Reviews</h2>
+                <h3> Our lovely viewers reviews</h3>
+                <div class="review-wrapper">
+                    <div class="review">
+                        <div>
+                            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/581/original/review-1.jpg?1729023931"
+                                alt="A lady" class="photo">
+                        </div>
+                        <div class="review-text">
+                            <h4>Kimberley Parker</h4>
+                            <h5>Baker</h5>
+                            <p>
+                                "This podcast is a delightful blend of baking tips and heartfelt stories that inspire
+                                both
+                                novice, proffessional chefs and seasoned bakers who loves to explore
+                                alike!"
+                            </p>
+                            <div class="rating">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star ">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/580/original/review-2.jpg?1729023899"
+                            alt="A man" class="photo">
+                        <div class="review-text">
+                            <h4>Spencer Thurman</h4>
+                            <h5> Software Engineer</h5>
+                            <p>"This podcast seamlessly blends fitness insights with tech talk, offering valuable
+                                strategies
+                                for staying active while
+                                navigating the demands of a software engineering career!"</p>
+                            <div class="rating">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star ">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review"><img
+                            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/579/original/review-3.jpg?1729023849"
+                            alt=" A lady" class="photo">
+                        <div class="review-text">
+                            <h4>Grace Taylor</h4>
+                            <h5> Model</h5>
+                            <p>"This podcast offers a refreshing behind-the-scenes look at the fashion industry, filled
+                                with
+                                insightful interviews and
+                                empowering stories for every aspiring model!"</p>
+
+                            <div class="rating">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star ">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review"><img
+                            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/578/original/review-4.jpg?1729023821"
+                            alt="A man" class="photo">
+                        <div class="review-text">
+                            <h4>Bruno Stoneman</h4>
+                            <h5> Gym Instructor </h5>
+                            <p>
+                                "This podcast is a powerhouse of fitness knowledge, packed with practical tips and
+                                motivational stories that keep you
+                                inspired to crush your goals!"
+                            </p>
+                            <div class="rating">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star ">
+                                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/147/577/original/star.png?1729023654"
+                                    class="star" alt="star">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="blog" id="blog">
+                <h2>Our Blog</h2>
+                <div class="blog-wrapper">
+                    <div class="blog-photo">
+                        <img src="https://img.freepik.com/free-photo/retro-microphone-isolated-color-background_1387-912.jpg?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                            alt="microphone">
+                    </div>
+
+                    <div class="blog-content">
+                        <p>Are you on the hunt for something new to listen to? Look no further! In our latest episode,
+                            we
+                            dive
+                            into the world of
+                            podcasts, exploring genres from true crime to comedy, and everything in between.
+
+                            Join us as we chat with hosts, share recommendations, and uncover hidden gems that deserve a
+                            spot in
+                            your playlist.
+                            Whether you're commuting, working out, or just relaxing at home, there’s a perfect podcast
+                            waiting
+                            for you. Tune in and
+                            find your next favorite listen!
+
+                            Don’t forget to subscribe and share your top picks with us! Happy listening! 🎧</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer" id="contact">
+            <div class="footer-wrapper">
+                <div class="footer-content">
+                    <h2>Contact</h2>
+                    <p>Phone number: 09099871065</p>
+                    <address>plot 4, Atamunu Crescent, Calabar-South,Cross-river,Nigeria</address>
+                    <p>xianaudoh17@gmail.com</p>
+                    <div class="social-media">
+                        <img src="https://cdn-icons-png.freepik.com/256/5926/5926550.png?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                            alt=" facebook-logo">
+                        <img src="https://cdn-icons-png.freepik.com/256/1384/1384015.png?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                            alt="instagram-logo" class="socials">
+                        <img src="https://cdn-icons-png.freepik.com/256/5969/5969020.png?uid=R168271863&ga=GA1.1.1178351019.1728871372&semt=ais_hybrid"
+                            alt="twitter-logo" class="socials">
+                    </div>
+                </div>
+                <div class=form-info>
+                    <form action>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" autofocus required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" autofocus required>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" autofocus required>
+                        <label for="number">Number:</label>
+                        <input type="number" id="number" autofocus required>
+                        <button type="submit" class="sign-up"> sign-up</button>
+                    </form>
+                </div>
+            </div>
+            <div class="rights">&copy; 2024 Coded with zeal by Christiana Udoh
+                <button class="change-theme"> Change theme</button>
+            </div>
+        </footer>
+
+
+        <script>
+
+
+            function loginNow() {
+                alert("Welcome to Love Culture Podcast ❤")
+                let name = prompt("What is name ?")
+                let email = prompt(" Enter your email address")
+                let password = prompt("Enter your password ")
+                let message = alert(`Welcome to   Love Culture Podcast ${name}🥰`)
+            }
+
+            let login = document.querySelector(".login")
+            login.addEventListener("click", loginNow)
+            function subscribeNow() {
+                let output = alert(`Thanks for subscribing ${name} 🥰`)
+                let result = alert("please vote for me.😉Thanks ❤ ")
+            }
+            let subscribe = document.querySelector(".subscribe")
+            subscribe.addEventListener("click", subscribeNow)
+
+            function darkTheme() {
+
+                let container = document.querySelector(".container")
+                if (container.classList.contains("dark")) {
+                    container.classList.remove("dark")
+                }
+                else {
+                    container.classList.add("dark")
+                }
+            }
+            let changeTheme = document.querySelector(".change-theme")
+            changeTheme.addEventListener("click", darkTheme)
+
+        </script>
+    </div>
+</body>
+
+
+
+</html>
